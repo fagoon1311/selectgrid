@@ -34,7 +34,7 @@ const Grid = ({ rows, cols }) => {
                     selected.push(row * cols + col + 1)
                 }
             }
-            console.log(selected)
+            setSelectedBoxes(selected)
         }   
     }
   return (
@@ -44,7 +44,7 @@ const Grid = ({ rows, cols }) => {
       onMouseUp={handleMouseUp}>
         {[...Array(rows * cols).keys()].map((_, i) => (
           <div 
-          className="border border-black flex items-center justify-center h-16 bg-slate-100" 
+          className={`border select-none border-black flex items-center justify-center h-16 bg-slate-100 ${selectedBoxes.includes(i + 1) ? "bg-fuchsia-200" : ''}`}
           key={i}
           onMouseDown={()=>handleMouseDown(i+1)}
           onMouseEnter={()=>handleMouseEnter(i+1)}>
