@@ -6,7 +6,7 @@ const Grid = ({ rows, cols }) => {
 
     const handleMouseDown = (boxNumber)=>{
         setIsMouseDown(true)
-        setSelectedBoxes(boxNumber)
+        setSelectedBoxes([boxNumber])
     }
 
     const handleMouseUp = () =>{
@@ -17,9 +17,9 @@ const Grid = ({ rows, cols }) => {
         if(isMouseDown){
             const start = selectedBoxes[0]
             const end = boxNumber
+
             const startRow = Math.floor((start-1)/cols)
             const startCol = (start-1)%cols
-
             const endRow = Math.floor((end-1)/cols)
             const endCol = (end-1)%cols
 
@@ -29,8 +29,8 @@ const Grid = ({ rows, cols }) => {
             const maxCol = Math.max(startCol, endCol)
 
             let selected = []
-            for(let row = minRow; row < maxRow; row ++){
-                for(let col = minCol; col < maxCol; col++){
+            for(let row = minRow; row <= maxRow; row ++){
+                for(let col = minCol; col <= maxCol; col++){
                     selected.push(row * cols + col + 1)
                 }
             }
